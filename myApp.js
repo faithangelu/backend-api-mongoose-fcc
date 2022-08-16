@@ -2,9 +2,7 @@ const { application } = require('express');
 let mongoose = require('mongoose');
 require('dotenv').config();
 
-let uri = "mongodb+srv://imfaithangelou:CFHidalgo09@myapp-backend-fcc.ywvccth.mongodb.net/?retryWrites=true&w=majority";
-
-mongoose.connect(uri, { 
+mongoose.connect(process.env.MONGO_URI, { 
   useNewUrlParser: true, 
   useUnifiedTopology: true }
 ).then(() => console.log("Database connected!"))
@@ -20,8 +18,6 @@ const personSchema = new mongoose.Schema({
 
 // create Model
 const Person = mongoose.model('Person', personSchema);
-
-// let Person;
 
 const createAndSavePerson = (done) => {
   var personDetails = new Person({
