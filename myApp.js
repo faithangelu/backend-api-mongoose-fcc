@@ -7,13 +7,13 @@ mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopol
 let personSchema = new mongoose.Schema({
   name: String,
   age: Number,
-  favoriteFoods : Array
+  favoriteFoods : [String]
 })
 
 // create Model
-module.exports = mongoose.model('Person', personSchema);
+let Person = mongoose.model('Person', personSchema);
 
-let Person;
+// let Person;
 
 const createAndSavePerson = (done) => {
   done(null /*, data*/);
